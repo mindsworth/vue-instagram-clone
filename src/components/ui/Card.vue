@@ -16,16 +16,31 @@
     <div class="action-btns">
       <div class="left">
         <LoveIcon class="icon" />
+        <CommentIcon class="icon" />
+        <ShareIcon class="icon" />
       </div>
+
+      <div class="right">
+        <BookmarkIcon class="icon" />
+      </div>
+    </div>
+    <div class="caption">
+      <p>
+        <span class="username">Mindsworth</span> Friends who slay together
+        💙✨💙 @charlie_clothings and @awemie_girl Dress @charlie_clothings
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-import LoveIcon from "../../../public/svgs/love.svg";
+import LoveIcon from "../../assets/svgs/love";
+import CommentIcon from "../../assets/svgs/comment";
+import ShareIcon from "../../assets/svgs/share";
+import BookmarkIcon from "../../assets/svgs/bookmark";
 
 export default {
-  components: { LoveIcon }
+  components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon }
 };
 </script>
 
@@ -71,6 +86,20 @@ export default {
       width: 100%;
       object-fit: contain;
       margin-bottom: -1%;
+    }
+  }
+
+  .action-btns {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+
+    & .icon {
+      cursor: pointer;
+
+      &:not(last-child) {
+        margin-right: 15px;
+      }
     }
   }
 }
