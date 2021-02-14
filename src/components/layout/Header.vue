@@ -19,6 +19,8 @@ nav.header {
   height: 54px;
   border-bottom: 1px solid rgba(219, 219, 219, 1);
   background-color: #fff;
+  position: sticky;
+  top: 0;
 
   & .container {
     padding-top: 10px;

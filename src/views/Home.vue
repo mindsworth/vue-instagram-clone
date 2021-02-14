@@ -3,6 +3,8 @@
     <div class="container">
       <div class="post-container">
         <card />
+        <card />
+        <card />
       </div>
       <div class="sidebar"></div>
     </div>

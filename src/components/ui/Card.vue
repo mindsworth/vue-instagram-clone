@@ -52,6 +52,10 @@ export default {
   overflow: hidden;
   padding: 3px;
 
+  &:not(:last-child) {
+    margin-bottom: 3em;
+  }
+
   .card-header {
     display: flex;
     align-items: center;
@@ -104,7 +108,7 @@ export default {
   }
 
   .caption {
-    padding: 15px 25px;
+    padding: 0 25px 15px;
   }
 }
 </style>
