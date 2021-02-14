@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import LoveIcon from "../../assets/svgs/love.svg";
+import LoveIcon from "../../../public/svgs/love.svg";
 
 export default {
   components: { LoveIcon }
