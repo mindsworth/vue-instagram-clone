@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="container">
+      <div class="post-container">
+        <card />
+      </div>
+      <div class="sidebar"></div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import Card from "../components/ui/Card.vue";
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  }
+  components: { Card }
 };
 </script>
+
+<style lang="scss">
+.home {
+  height: 100%;
+
+  .container {
+    display: grid;
+    grid-template-columns: 3fr 1.2fr;
+  }
+
+  .post-container {
+    padding: 30px 0;
+  }
+}
+</style>

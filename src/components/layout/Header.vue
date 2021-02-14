@@ -15,14 +15,16 @@ export default {};
 </script>
 
 <style lang="scss">
-.header {
+nav.header {
   height: 54px;
   border-bottom: 1px solid rgba(219, 219, 219, 1);
-}
+  background-color: #fff;
 
-.header .container {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  & .container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100%;
+  }
 }
 
 .img-fluid {

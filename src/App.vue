@@ -34,12 +34,13 @@ body,
 
 .view {
   min-height: 100vh;
+  background-color: #e3ecf2;
 }
 
 .container {
   margin: 0 auto;
   max-width: 960px;
-  height: 100%;
+  min-height: 100%;
   padding: 0 20px;
 }
 </style>
