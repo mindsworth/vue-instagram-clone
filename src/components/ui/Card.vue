@@ -102,5 +102,9 @@ export default {
       }
     }
   }
+
+  .caption {
+    padding: 15px 25px;
+  }
 }
 </style>
