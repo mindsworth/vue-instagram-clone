@@ -28,7 +28,6 @@ export default {
   width: var(--avatar-size);
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 15px;
   border-bottom: 1px solid rgba(219, 219, 219, 0.5);
 
   & img {

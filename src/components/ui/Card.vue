@@ -56,6 +56,10 @@ export default {
     display: flex;
     align-items: center;
     padding: 15px 25px;
+
+    & .avatar {
+      margin-right: 10px;
+    }
   }
 
   .username {
@@ -91,6 +95,10 @@ export default {
 
   .caption {
     padding: 0 25px 15px;
+
+    & p {
+      font-weight: 500;
+    }
   }
 }
 </style>
