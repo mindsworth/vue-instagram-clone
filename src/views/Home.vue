@@ -2,9 +2,7 @@
   <div class="home">
     <div class="container">
       <div class="post-container">
-        <div v-for="post in posts" :key="post.username">
-          <card :post="post" />
-        </div>
+        <card v-for="post in posts" :key="post.username" :post="post" />
       </div>
       <div class="sidebar"></div>
     </div>
