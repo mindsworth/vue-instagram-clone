@@ -10,16 +10,19 @@
           <Avatar :size="36" />
           <div class="username">{{ post.username }}</div>
         </div>
+
         <div class="chat-thread">
-          <div
-            class="comment-item"
-            v-for="comment in comments"
-            :key="comment.username"
-          >
-            <Avatar :size="36" />
-            <div class="comment-text">
-              <span class="username">{{ comment.username }}</span>
-              {{ comment.text }}
+          <div class="comment-wrapper">
+            <div
+              class="comment-item"
+              v-for="comment in comments"
+              :key="comment.username"
+            >
+              <Avatar :size="36" />
+              <div class="comment-text">
+                <span class="username">{{ comment.username }}</span>
+                {{ comment.text }}
+              </div>
             </div>
           </div>
         </div>
@@ -94,6 +97,7 @@ export default {
     display: flex;
     flex-direction: column;
     border-left: 1px solid var(--border-color-gray);
+    padding: 0;
 
     &-header {
       display: flex;
@@ -111,25 +115,31 @@ export default {
     }
 
     .chat-thread {
-      flex: 1 1;
       padding: 15px;
+      min-height: 0;
+      flex: 1 1 0;
 
-      & .comment-item {
-        display: flex;
+      .comment-wrapper {
+        overflow: auto;
+        height: 100%;
 
-        &:not(:last-child) {
-          margin-bottom: 1em;
+        & .comment-item {
+          display: flex;
+
+          &:not(:last-child) {
+            margin-bottom: 1em;
+          }
+
+          & .avatar {
+            margin-right: 10px;
+          }
         }
 
-        & .avatar {
-          margin-right: 10px;
+        & .comment-text {
+          flex: 1 1;
+          line-height: 18px;
+          font-weight: 500;
         }
-      }
-
-      & .comment-text {
-        flex: 1 1;
-        line-height: 18px;
-        font-weight: 500;
       }
     }
 
