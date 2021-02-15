@@ -17,7 +17,7 @@ export default {};
 <style lang="scss">
 nav.header {
   height: 54px;
-  border-bottom: 1px solid rgba(219, 219, 219, 1);
+  border-bottom: 1px solid var(--border-color-gray);
   background-color: #fff;
   position: sticky;
   top: 0;

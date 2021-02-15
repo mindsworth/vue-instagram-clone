@@ -1,9 +1,8 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <div class="avatar">
-        <img src="https://via.placeholder.com/150" alt="user thumbnail" />
-      </div>
+      <Avatar />
+
       <div class="username">Mindsworth</div>
     </div>
     <div class="feature-image-wrapper">
@@ -38,9 +37,10 @@ import LoveIcon from "../../assets/svgs/love";
 import CommentIcon from "../../assets/svgs/comment";
 import ShareIcon from "../../assets/svgs/share";
 import BookmarkIcon from "../../assets/svgs/bookmark";
+import Avatar from "./Avatar.vue";
 
 export default {
-  components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon }
+  components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon, Avatar }
 };
 </script>
 
@@ -60,20 +60,6 @@ export default {
     display: flex;
     align-items: center;
     padding: 15px 25px;
-  }
-
-  .avatar {
-    height: 40px;
-    width: 40px;
-    border-radius: 100%;
-    overflow: hidden;
-    margin-right: 15px;
-    border-bottom: 1px solid rgba(219, 219, 219, 0.5);
-  }
-
-  .avatar img {
-    max-height: 100%;
-    object-fit: contain;
   }
 
   .username {

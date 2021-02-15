@@ -19,6 +19,11 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+  --border-color-gray: rgba(219, 219, 219, 1);
+  --white: #ffffff;
+}
+
 body,
 * {
   margin: 0;
