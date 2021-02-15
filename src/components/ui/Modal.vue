@@ -1,14 +1,9 @@
 <template>
   <div class="modal" data-name="close">
+    <div class="close-wrapper" @:click="$emit('handleModal')" data-name="close">
+      <CloseIcon class="close-icon" data-name="close" />
+    </div>
     <div class="dialog">
-      <div
-        class="close-wrapper"
-        @:click="$emit('handleModal')"
-        data-name="close"
-      >
-        <CloseIcon class="close-icon" data-name="close" />
-      </div>
-
       <div><slot></slot></div>
     </div>
   </div>
@@ -43,6 +38,7 @@ export default {
     width: 100%;
     max-width: 935px;
     min-height: 450;
+    animation: fadeInDown 300ms ease-in-out;
   }
 
   .close-wrapper {
