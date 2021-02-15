@@ -10,7 +10,7 @@
     </div>
     <div class="action-btns">
       <div class="left">
-        <LoveIcon class="icon" />
+        <LoveIcon :status="post.liked" class="icon" />
         <CommentIcon class="icon" />
         <ShareIcon class="icon" />
       </div>
@@ -36,7 +36,11 @@ import Avatar from "./Avatar.vue";
 
 export default {
   props: ["post"],
-  components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon, Avatar }
+  components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon, Avatar },
+
+  setup(props) {
+    console.log("post", props.post);
+  }
 };
 </script>
 

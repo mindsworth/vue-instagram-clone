@@ -26,12 +26,7 @@
 </template>
 
 <script>
-import { toRefs } from "vue";
 export default {
-  setup(props) {
-    const { status } = toRefs(props);
-
-    return { status };
-  }
+  props: ["status"]
 };
 </script>
