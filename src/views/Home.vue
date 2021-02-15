@@ -11,15 +11,25 @@
 
 <script>
 import Card from "../components/ui/Card.vue";
-import { postsData } from "../mockData";
+// import { postsData } from "../mockData";
+import { db } from "../../config/firebase";
+import { onMounted, ref } from "vue";
 
 export default {
   name: "Home",
   components: { Card },
   setup() {
-    const posts = postsData;
+    const posts = ref([]);
 
-    console.log("posts", posts);
+    onMounted(() => {
+      db.collection("Posts").onSnapshot(snapshot => {
+        console.log(
+          "snapshot",
+          snapshot.docs.map(doc => doc.data())
+        );
+        posts.value = snapshot.docs.map(doc => doc.data());
+      });
+    });
 
     return { posts };
   }
