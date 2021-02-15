@@ -11,7 +11,6 @@
 
 <script>
 import Card from "../components/ui/Card.vue";
-// import { postsData } from "../mockData";
 import { db } from "../../config/firebase";
 import { onMounted, onUnmounted, ref } from "vue";
 
@@ -45,6 +44,10 @@ export default {
   .container {
     display: grid;
     grid-template-columns: 3fr 1.2fr;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
   }
 
   .post-container {

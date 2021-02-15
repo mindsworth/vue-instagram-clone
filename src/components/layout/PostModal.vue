@@ -93,6 +93,19 @@ export default {
   margin: 3em;
   background-color: #fff;
 
+  @media screen and (max-width: 768px) {
+    display: block;
+
+    .side-wrapper {
+      height: 500px;
+
+      &-header {
+        margin-top: -4em;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
   & .featured-image-wrapper {
     display: flex;
 
@@ -118,9 +131,14 @@ export default {
       & .avatar {
         margin-right: 10px;
       }
+
       .username {
         color: rgba(38, 38, 38, 1);
         font-weight: bold;
+
+        @media screen and (max-width: 768px) {
+          color: white;
+        }
       }
     }
 
