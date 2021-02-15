@@ -6,7 +6,7 @@
       <div class="username">{{ post.username }}</div>
     </div>
     <div class="feature-image-wrapper">
-      <div class="flash-heart">
+      <div class="flash-heart" v-if="showHeart">
         <LoveIcon :status="post.liked" class="icon" />
       </div>
       <img :src="post.imageUrl" class="feature-image" />
@@ -42,7 +42,7 @@ import BookmarkIcon from "../../assets/svgs/bookmark";
 import Avatar from "./Avatar.vue";
 
 import { db } from "../../../config/firebase";
-import { onUnmounted } from "vue";
+import { onUnmounted, ref } from "vue";
 
 export default {
   props: ["post"],
@@ -50,18 +50,32 @@ export default {
 
   setup(props) {
     let unsubscribe;
+    const showHeart = ref(false);
+
     const likeAPost = seletedId => {
+      console.log(showHeart.value);
       console.log("LIKED", seletedId);
 
       unsubscribe = db
         .collection("Posts")
         .doc(seletedId)
-        .update({ liked: !props.post.liked });
+        .update({ liked: !props.post.liked })
+        .then(() => {
+          console.log("resLIKED");
+          showHeart.value = true;
+
+          setTimeout(() => {
+            showHeart.value = false;
+          }, 500);
+        })
+        .catch(error => {
+          console.log("errorLIKED", error.message);
+        });
     };
 
     onUnmounted(() => unsubscribe());
 
-    return { likeAPost };
+    return { likeAPost, showHeart, unsubscribe };
   }
 };
 </script>
@@ -107,7 +121,7 @@ export default {
       place-items: center;
 
       & .icon {
-        animation: scale 1s;
+        animation: scale 0.5s;
       }
     }
 
@@ -144,12 +158,11 @@ export default {
 @keyframes scale {
   from {
     transform: scale(0);
-    display: block;
     opacity: 1;
   }
+
   to {
-    display: none;
-    transform: scale(10);
+    transform: scale(15);
     opacity: 0;
   }
 }
