@@ -72,7 +72,13 @@ export default {
 
     .input-wrapper {
       .editor {
-        height: 3em;
+        padding: 1em;
+        border-top: 1px solid var(--border-color-gray);
+        font-weight: 500;
+
+        &:focus {
+          outline: 0;
+        }
       }
     }
   }

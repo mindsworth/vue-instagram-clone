@@ -42,6 +42,7 @@ export default {
   .dialog {
     width: 100%;
     max-width: 935px;
+    min-height: 450;
   }
 
   .close-wrapper {
