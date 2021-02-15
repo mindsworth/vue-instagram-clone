@@ -13,7 +13,11 @@
     </div>
     <div class="action-btns">
       <div class="left">
-        <LoveIcon :status="post.liked" @click="likeAPost(post.id)" />
+        <LoveIcon
+          :status="post.liked"
+          @click="likeAPost(post.id)"
+          class="icon"
+        />
         <CommentIcon class="icon" />
         <ShareIcon class="icon" />
       </div>
@@ -97,6 +101,14 @@ export default {
 
     .flash-heart {
       position: absolute;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+
+      & .icon {
+        animation: scale 1s;
+      }
     }
 
     & .feature-image {
@@ -126,6 +138,19 @@ export default {
     & p {
       font-weight: 500;
     }
+  }
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0);
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    transform: scale(10);
+    opacity: 0;
   }
 }
 </style>
