@@ -10,7 +10,11 @@
     </div>
     <div class="action-btns">
       <div class="left">
-        <LoveIcon :status="post.liked" class="icon" />
+        <LoveIcon
+          :status="post.liked"
+          class="icon"
+          @click="likeAPost(post.id)"
+        />
         <CommentIcon class="icon" />
         <ShareIcon class="icon" />
       </div>
@@ -38,8 +42,12 @@ export default {
   props: ["post"],
   components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon, Avatar },
 
-  setup(props) {
-    console.log("post", props.post);
+  setup() {
+    const likeAPost = seletedId => {
+      console.log("LIKED", seletedId);
+    };
+
+    return { likeAPost };
   }
 };
 </script>
