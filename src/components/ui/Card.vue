@@ -74,8 +74,6 @@ export default {
         e.target.getAttribute("data-name") === "open" ||
         e.target.getAttribute("data-name") === "close";
 
-      console.log("e", isValidToClick);
-
       if (!isValidToClick) return;
 
       visible.value = !visible.value;
@@ -145,6 +143,7 @@ export default {
     border-radius: 15px;
     overflow: hidden;
     position: relative;
+    display: flex;
 
     .flash-heart {
       position: absolute;
@@ -161,7 +160,6 @@ export default {
     & .feature-image {
       width: 100%;
       object-fit: contain;
-      margin-bottom: -1%;
     }
   }
 
