@@ -143,13 +143,15 @@ export default {
     }
 
     .chat-thread {
-      padding: 25px 15px;
       min-height: 0;
       flex: 1 1 0;
+      overflow: hidden;
 
       .comment-wrapper {
         overflow: auto;
         height: 100%;
+        padding: 15px;
+        margin-right: -15px;
 
         & .comment-item {
           display: flex;
