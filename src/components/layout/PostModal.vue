@@ -9,7 +9,15 @@
           <Avatar />
           <div class="username">{{ post.username }}</div>
         </div>
-        <div class="chat-thread"></div>
+        <div class="chat-thread">
+          <div class="comment-item">
+            <Avatar />
+            <div class="comment-text">
+              <span class="username">{{ post.username }}</span> You are loved
+              and you deserve it You are beautiful with or without a gift ❤️
+            </div>
+          </div>
+        </div>
         <div class="input-wrapper">
           <div class="editor" contenteditable></div>
         </div>
@@ -68,6 +76,20 @@ export default {
 
     .chat-thread {
       flex: 1 1;
+
+      & .comment-item {
+        display: flex;
+        border: 1px solid #000;
+
+        & .avatar {
+          margin-right: 10px;
+        }
+      }
+
+      & .comment-text {
+        flex: 1 1;
+        line-height: 18px;
+      }
     }
 
     .input-wrapper {
