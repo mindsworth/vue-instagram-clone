@@ -6,11 +6,7 @@
       <div class="username">{{ post.username }}</div>
     </div>
     <div class="feature-image-wrapper">
-      <img
-        src="https://instagram.flos8-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/149426673_263752831879026_1310107989549781236_n.jpg?_nc_ht=instagram.flos8-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=Akbb_Zqen1EAX8Jlokk&tp=1&oh=2541610d597662f05e1d936f4c4791e0&oe=605273DA"
-        alt="Feature Image"
-        class="feature-image"
-      />
+      <img :src="post.imageUrl" class="feature-image" />
     </div>
     <div class="action-btns">
       <div class="left">
@@ -25,8 +21,7 @@
     </div>
     <div class="caption">
       <p>
-        <span class="username">Mindsworth</span> Friends who slay together
-        💙✨💙 @charlie_clothings and @awemie_girl Dress @charlie_clothings
+        <span class="username">{{ post.username }}</span> {{ post.caption }}
       </p>
     </div>
   </div>
