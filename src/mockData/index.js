@@ -1,6 +1,6 @@
 export const postsData = [
   {
-    caption: "/“Peaceful protest is a human right!! #EndSARS/” - Rihanna",
+    caption: "“Peaceful protest is a human right!! #EndSARS” - Rihanna",
     imageUrl:
       "https://instagram.flos8-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/149135031_437008950947271_2218151799331021222_n.jpg?_nc_ht=instagram.flos8-1.fna.fbcdn.net&_nc_cat=103&_nc_ohc=-HzngcoG6akAX_dItmR&tp=1&oh=d0a17ba440843df1a730a911aa1f4ef8&oe=60526CBB",
     username: "officialhiptv"
