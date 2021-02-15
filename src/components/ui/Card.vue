@@ -118,6 +118,7 @@ export default {
   border-radius: 20px;
   overflow: hidden;
   padding: 3px;
+  padding-bottom: 1em;
 
   &:not(:last-child) {
     margin-bottom: 3em;
