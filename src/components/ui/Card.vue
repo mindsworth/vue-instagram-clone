@@ -21,7 +21,11 @@
           @click="likeAPost(post.id)"
           class="icon"
         />
-        <CommentIcon class="icon" />
+        <CommentIcon
+          class="icon"
+          @click="showSinglePostModal"
+          data-name="open"
+        />
         <ShareIcon class="icon" />
       </div>
 

@@ -7,7 +7,7 @@
 
       <div class="side-wrapper">
         <div class="side-wrapper-header">
-          <Avatar :size="36" />
+          <Avatar :size="32" />
           <div class="username">{{ post.username }}</div>
         </div>
 
@@ -18,7 +18,7 @@
               v-for="comment in comments"
               :key="comment.username"
             >
-              <Avatar :size="36" />
+              <Avatar :size="32" />
               <div class="comment-text">
                 <span class="username">{{ comment.username }}</span>
                 {{ comment.text }}
