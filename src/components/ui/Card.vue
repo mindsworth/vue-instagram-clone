@@ -8,7 +8,11 @@
       <div class="flash-heart" v-if="showHeart">
         <LoveIcon :status="post.liked" class="icon" />
       </div>
-      <img :src="post.imageUrl" class="feature-image" />
+      <img
+        :src="post.imageUrl"
+        class="feature-image"
+        @dblclick="likeAPost(post.id)"
+      />
     </div>
     <div class="action-btns">
       <div class="left">
@@ -30,6 +34,7 @@
         <span class="username">{{ post.username }}</span> {{ post.caption }}
       </p>
     </div>
+    <comment />
   </div>
 </template>
 
@@ -39,18 +44,27 @@ import CommentIcon from "../../assets/svgs/comment";
 import ShareIcon from "../../assets/svgs/share";
 import BookmarkIcon from "../../assets/svgs/bookmark";
 import Avatar from "./Avatar.vue";
+import Comment from "../layout/Comment";
 
 import { db } from "../../../config/firebase";
 import { onUnmounted, ref } from "vue";
 
 export default {
   props: ["post"],
-  components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon, Avatar },
+  components: {
+    LoveIcon,
+    CommentIcon,
+    ShareIcon,
+    BookmarkIcon,
+    Avatar,
+    Comment
+  },
 
   setup(props) {
     let unsubscribe;
     const showHeart = ref(false);
 
+    // Like Post Method
     const likeAPost = seletedId => {
       console.log(showHeart.value);
       console.log("LIKED", seletedId);
@@ -146,7 +160,7 @@ export default {
   }
 
   .caption {
-    padding: 0 25px 15px;
+    padding: 0 25px;
 
     & p {
       font-weight: 500;
