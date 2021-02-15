@@ -29,12 +29,18 @@
 
         <div class="input-wrapper">
           <div
+            ref="editorRef"
             class="editor"
             contenteditable
             @input="onInputChange"
-            :value="commentText"
           />
-          <button class="post-btn" @click="addComment">Post</button>
+          <button
+            class="post-btn"
+            @click="addComment"
+            :disabled="commentText.length === 0"
+          >
+            Post
+          </button>
         </div>
       </div>
     </div>
@@ -54,6 +60,7 @@ export default {
 
   setup(props) {
     const commentText = ref("");
+    const editorRef = ref("");
     const comments = ref(commentData);
 
     const onInputChange = e => {
@@ -61,16 +68,19 @@ export default {
     };
 
     const addComment = () => {
+      if (commentText.value.length === 0) return;
+
       comments.value.push({
         username: props.post.username,
-        text: commentText,
+        text: commentText.value,
         timestamp: ""
       });
 
+      editorRef.value.innerText = "";
       commentText.value = "";
     };
 
-    return { commentText, onInputChange, addComment, comments };
+    return { commentText, editorRef, onInputChange, addComment, comments };
   }
 };
 </script>
@@ -115,7 +125,7 @@ export default {
     }
 
     .chat-thread {
-      padding: 15px;
+      padding: 25px 15px;
       min-height: 0;
       flex: 1 1 0;
 
@@ -162,6 +172,10 @@ export default {
         border: 0;
         padding: 15px;
         cursor: pointer;
+
+        &:disabled {
+          cursor: not-allowed;
+        }
       }
     }
   }
