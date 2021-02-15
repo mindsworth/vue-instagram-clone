@@ -29,6 +29,7 @@ body,
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 15px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

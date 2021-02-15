@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
 .modal .post-wrapper {
   display: grid;
-  grid-template-columns: 3fr 355px;
+  grid-template-columns: 3fr 350px;
   justify-content: center;
   margin: 3em;
   background-color: #fff;
@@ -89,6 +89,7 @@ export default {
       & .comment-text {
         flex: 1 1;
         line-height: 18px;
+        font-weight: 500;
       }
     }
 
