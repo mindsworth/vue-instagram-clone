@@ -10,6 +10,7 @@
 <script>
 import { ref } from "vue";
 import Modal from "./Modal";
+
 export default {
   name: "Comment",
   components: { Modal },
@@ -17,6 +18,13 @@ export default {
     const visible = ref(false);
     const showModal = () => {
       visible.value = true;
+
+      if (visible.value) {
+        document.documentElement.style.overflow = "hidden";
+        return;
+      }
+
+      document.documentElement.style.overflow = "auto";
     };
 
     return { visible, showModal };
