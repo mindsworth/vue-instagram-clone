@@ -1,7 +1,9 @@
 <template>
   <div class="comment">
     <div class="comment-count">
-      <span v-on:click="$emit('handleModal')">view all 0 comments</span>
+      <span @:click="$emit('handleModal', $event)" data-name="open"
+        >view all 0 comments</span
+      >
     </div>
   </div>
 </template>

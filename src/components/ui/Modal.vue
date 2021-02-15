@@ -1,12 +1,15 @@
 <template>
-  <div class="modal" v-if="visible">
+  <div class="modal" data-name="close">
     <div class="dialog">
-      <h1>Modal Component</h1>
-      <div class="close-wrapper">
-        <CloseIcon class="close-icon" />
+      <div
+        class="close-wrapper"
+        @:click="$emit('handleModal')"
+        data-name="close"
+      >
+        <CloseIcon class="close-icon" data-name="close" />
       </div>
       <div class="post-wrapper">
-        <img src="" alt="" />
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -17,7 +20,7 @@ import CloseIcon from "../../assets/svgs/close";
 
 export default {
   name: "Modal",
-  props: ["visible"],
+  props: [],
   components: { CloseIcon }
 };
 </script>

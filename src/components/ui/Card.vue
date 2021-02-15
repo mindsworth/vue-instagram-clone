@@ -35,7 +35,7 @@
       </p>
     </div>
     <comment @click="showSinglePostModal" />
-    <Modal :visible="visible" />
+    <PostModal :visible="visible" @click="showSinglePostModal" />
   </div>
 </template>
 
@@ -44,9 +44,9 @@ import LoveIcon from "../../assets/svgs/love";
 import CommentIcon from "../../assets/svgs/comment";
 import ShareIcon from "../../assets/svgs/share";
 import BookmarkIcon from "../../assets/svgs/bookmark";
-import Avatar from "./Avatar.vue";
+import Avatar from "./Avatar";
 import Comment from "../layout/Comment";
-import Modal from "../ui/Modal";
+import PostModal from "../layout/PostModal";
 
 import { db } from "../../../config/firebase";
 import { onUnmounted, ref } from "vue";
@@ -60,7 +60,7 @@ export default {
     BookmarkIcon,
     Avatar,
     Comment,
-    Modal
+    PostModal
   },
 
   setup(props) {
@@ -69,8 +69,16 @@ export default {
     const visible = ref(false);
 
     // Show modal
-    const showSinglePostModal = () => {
-      visible.value = true;
+    const showSinglePostModal = e => {
+      const isValidToClick =
+        e.target.getAttribute("data-name") === "open" ||
+        e.target.getAttribute("data-name") === "close";
+
+      console.log("e", isValidToClick);
+
+      if (!isValidToClick) return;
+
+      visible.value = !visible.value;
 
       if (visible.value) {
         document.documentElement.style.overflow = "hidden";
