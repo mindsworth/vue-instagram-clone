@@ -21,6 +21,7 @@ nav.header {
   background-color: #fff;
   position: sticky;
   top: 0;
+  z-index: 1;
 
   & .container {
     padding-top: 10px;

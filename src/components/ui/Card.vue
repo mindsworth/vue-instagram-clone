@@ -2,14 +2,13 @@
   <div class="card">
     <div class="card-header">
       <Avatar />
-
       <div class="username">{{ post.username }}</div>
     </div>
     <div class="feature-image-wrapper">
+      <img :src="post.imageUrl" class="feature-image" />
       <div class="flash-heart" v-if="showHeart">
         <LoveIcon :status="post.liked" class="icon" />
       </div>
-      <img :src="post.imageUrl" class="feature-image" />
     </div>
     <div class="action-btns">
       <div class="left">
@@ -113,7 +112,7 @@ export default {
     overflow: hidden;
     position: relative;
 
-    .flash-heart {
+    & .flash-heart {
       position: absolute;
       width: 100%;
       height: 100%;
