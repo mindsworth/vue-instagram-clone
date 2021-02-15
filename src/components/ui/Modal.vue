@@ -38,7 +38,7 @@ export default {
     width: 100%;
     max-width: 935px;
     min-height: 450;
-    animation: fadeInDown 300ms ease-in-out;
+    animation: fadeInDown 500ms ease-in-out;
   }
 
   .close-wrapper {
