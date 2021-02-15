@@ -13,22 +13,25 @@
 import Card from "../components/ui/Card.vue";
 // import { postsData } from "../mockData";
 import { db } from "../../config/firebase";
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 export default {
   name: "Home",
   components: { Card },
   setup() {
+    let unsubscribe;
     const posts = ref([]);
 
     onMounted(() => {
-      db.collection("Posts").onSnapshot(snapshot => {
+      unsubscribe = db.collection("Posts").onSnapshot(snapshot => {
         posts.value = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
       });
     });
+
+    onUnmounted(() => unsubscribe());
 
     return { posts };
   }
