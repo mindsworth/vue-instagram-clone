@@ -4,22 +4,34 @@
       <div class="featured-image-wrapper">
         <img :src="post.imageUrl" alt="Feature Image" class="featured-image" />
       </div>
+
       <div class="side-wrapper">
         <div class="side-wrapper-header">
           <Avatar :size="36" />
           <div class="username">{{ post.username }}</div>
         </div>
         <div class="chat-thread">
-          <div class="comment-item">
+          <div
+            class="comment-item"
+            v-for="comment in comments"
+            :key="comment.username"
+          >
             <Avatar :size="36" />
             <div class="comment-text">
-              <span class="username">{{ post.username }}</span> You are loved
-              and you deserve it You are beautiful with or without a gift ❤️
+              <span class="username">{{ comment.username }}</span>
+              {{ comment.text }}
             </div>
           </div>
         </div>
+
         <div class="input-wrapper">
-          <div class="editor" contenteditable></div>
+          <div
+            class="editor"
+            contenteditable
+            @input="onInputChange"
+            :value="commentText"
+          />
+          <button class="post-btn" @click="addComment">Post</button>
         </div>
       </div>
     </div>
@@ -30,9 +42,33 @@
 import Modal from "../ui/Modal";
 import Avatar from "../ui/Avatar";
 
+import { commentData } from "../../mockData";
+import { ref } from "vue";
+
 export default {
   props: ["visible", "post"],
-  components: { Modal, Avatar }
+  components: { Modal, Avatar },
+
+  setup(props) {
+    const commentText = ref("");
+    const comments = ref(commentData);
+
+    const onInputChange = e => {
+      commentText.value = e.target.innerText;
+    };
+
+    const addComment = () => {
+      comments.value.push({
+        username: props.post.username,
+        text: commentText,
+        timestamp: ""
+      });
+
+      commentText.value = "";
+    };
+
+    return { commentText, onInputChange, addComment, comments };
+  }
 };
 </script>
 
@@ -81,6 +117,10 @@ export default {
       & .comment-item {
         display: flex;
 
+        &:not(:last-child) {
+          margin-bottom: 1em;
+        }
+
         & .avatar {
           margin-right: 10px;
         }
@@ -94,14 +134,24 @@ export default {
     }
 
     .input-wrapper {
+      display: flex;
+      border-top: 1px solid var(--border-color-gray);
+
       .editor {
         padding: 1em;
-        border-top: 1px solid var(--border-color-gray);
         font-weight: 500;
+        flex: 1 1;
 
         &:focus {
           outline: 0;
         }
+      }
+
+      .post-btn {
+        background-color: transparent;
+        border: 0;
+        padding: 15px;
+        cursor: pointer;
       }
     }
   }
