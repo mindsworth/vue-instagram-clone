@@ -3,7 +3,7 @@
     <div class="card-header">
       <Avatar />
 
-      <div class="username">Mindsworth</div>
+      <div class="username">{{ post.username }}</div>
     </div>
     <div class="feature-image-wrapper">
       <img
@@ -40,6 +40,7 @@ import BookmarkIcon from "../../assets/svgs/bookmark";
 import Avatar from "./Avatar.vue";
 
 export default {
+  props: ["post"],
   components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon, Avatar }
 };
 </script>

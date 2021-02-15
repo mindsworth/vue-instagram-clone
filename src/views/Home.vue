@@ -2,9 +2,9 @@
   <div class="home">
     <div class="container">
       <div class="post-container">
-        <card />
-        <card />
-        <card />
+        <div v-for="post in posts" :key="post.username">
+          <card :post="post" />
+        </div>
       </div>
       <div class="sidebar"></div>
     </div>
@@ -13,9 +13,18 @@
 
 <script>
 import Card from "../components/ui/Card.vue";
+import { postsData } from "../mockData";
+
 export default {
   name: "Home",
-  components: { Card }
+  components: { Card },
+  setup() {
+    const posts = postsData;
+
+    console.log("posts", posts);
+
+    return { posts };
+  }
 };
 </script>
 
