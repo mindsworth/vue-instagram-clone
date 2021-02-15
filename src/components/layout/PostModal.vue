@@ -151,6 +151,7 @@ export default {
         overflow: auto;
         height: 100%;
         padding: 15px;
+        padding-right: 30px;
         margin-right: -15px;
 
         & .comment-item {
@@ -175,12 +176,20 @@ export default {
 
     .input-wrapper {
       display: flex;
+      justify-content: center;
+      align-items: flex-start;
       border-top: 1px solid var(--border-color-gray);
 
       .editor {
         padding: 1em;
         font-weight: 500;
         flex: 1 1;
+        width: 100%;
+        max-height: 10em;
+        overflow-y: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
 
         &:focus {
           outline: 0;
@@ -190,7 +199,7 @@ export default {
       .post-btn {
         background-color: transparent;
         border: 0;
-        padding: 15px;
+        padding: 15px 25px;
         cursor: pointer;
 
         &:disabled {
