@@ -5,16 +5,13 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed } from "vue";
 export default {
-  props: {
-    size: Number
-  },
-  setup(props) {
-    const { size } = toRefs(props);
+  props: ["size"],
 
+  setup(props) {
     const styleProps = computed(() => ({
-      "--avatar-size": `${size || 42}px`
+      "--avatar-size": `${props.size || 42}px`
     }));
 
     return { styleProps };

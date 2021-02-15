@@ -6,12 +6,12 @@
       </div>
       <div class="side-wrapper">
         <div class="side-wrapper-header">
-          <Avatar />
+          <Avatar :size="36" />
           <div class="username">{{ post.username }}</div>
         </div>
         <div class="chat-thread">
           <div class="comment-item">
-            <Avatar />
+            <Avatar :size="36" />
             <div class="comment-text">
               <span class="username">{{ post.username }}</span> You are loved
               and you deserve it You are beautiful with or without a gift ❤️
@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
 .modal .post-wrapper {
   display: grid;
-  grid-template-columns: 3fr 1.7fr;
+  grid-template-columns: 3fr 355px;
   justify-content: center;
   margin: 3em;
   background-color: #fff;
@@ -62,7 +62,7 @@ export default {
     &-header {
       display: flex;
       align-items: center;
-      padding: 15px 25px;
+      padding: 15px;
       border-bottom: 1px solid var(--border-color-gray);
 
       & .avatar {
@@ -76,10 +76,10 @@ export default {
 
     .chat-thread {
       flex: 1 1;
+      padding: 15px;
 
       & .comment-item {
         display: flex;
-        border: 1px solid #000;
 
         & .avatar {
           margin-right: 10px;
