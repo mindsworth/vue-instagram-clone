@@ -2,13 +2,19 @@
   <div class="modal" v-if="visible">
     <div class="dialog">
       <h1>Modal Component</h1>
-      <CloseIcon />
+      <div class="close-wrapper">
+        <CloseIcon class="close-icon" />
+      </div>
+      <div class="post-wrapper">
+        <img src="" alt="" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import CloseIcon from "../../assets/svgs/close";
+
 export default {
   name: "Modal",
   props: ["visible"],
@@ -27,10 +33,25 @@ export default {
   display: grid;
   place-items: center;
   z-index: 9999;
-  pointer-events: none;
 
   .dialog {
     max-width: 817px;
+    background-color: #fff;
+  }
+
+  .close-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+
+    .close-icon {
+      cursor: pointer;
+    }
+  }
+
+  .post-wrapper {
+    min-height: 450px;
   }
 }
 </style>

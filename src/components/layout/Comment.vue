@@ -1,33 +1,19 @@
 <template>
-  <Modal :visible="visible" />
   <div class="comment">
     <div class="comment-count">
-      <span @click="showModal">view all 0 comments</span>
+      <span v-on:click="$emit('handleModal')">view all 0 comments</span>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import Modal from "./Modal";
+// import { ref } from "vue";
 
 export default {
   name: "Comment",
-  components: { Modal },
+  components: {},
   setup() {
-    const visible = ref(false);
-    const showModal = () => {
-      visible.value = true;
-
-      if (visible.value) {
-        document.documentElement.style.overflow = "hidden";
-        return;
-      }
-
-      document.documentElement.style.overflow = "auto";
-    };
-
-    return { visible, showModal };
+    return {};
   }
 };
 </script>

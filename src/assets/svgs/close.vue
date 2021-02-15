@@ -1,7 +1,6 @@
 <template>
   <svg
     aria-label="Close"
-    class="_8-yf5 "
     fill="#ffffff"
     height="24"
     viewBox="0 0 48 48"

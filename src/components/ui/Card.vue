@@ -34,7 +34,8 @@
         <span class="username">{{ post.username }}</span> {{ post.caption }}
       </p>
     </div>
-    <comment />
+    <comment @click="showSinglePostModal" />
+    <Modal :visible="visible" />
   </div>
 </template>
 
@@ -45,6 +46,7 @@ import ShareIcon from "../../assets/svgs/share";
 import BookmarkIcon from "../../assets/svgs/bookmark";
 import Avatar from "./Avatar.vue";
 import Comment from "../layout/Comment";
+import Modal from "../ui/Modal";
 
 import { db } from "../../../config/firebase";
 import { onUnmounted, ref } from "vue";
@@ -57,24 +59,34 @@ export default {
     ShareIcon,
     BookmarkIcon,
     Avatar,
-    Comment
+    Comment,
+    Modal
   },
 
   setup(props) {
     let unsubscribe;
     const showHeart = ref(false);
+    const visible = ref(false);
+
+    // Show modal
+    const showSinglePostModal = () => {
+      visible.value = true;
+
+      if (visible.value) {
+        document.documentElement.style.overflow = "hidden";
+        return;
+      }
+
+      document.documentElement.style.overflow = "auto";
+    };
 
     // Like Post Method
     const likeAPost = seletedId => {
-      console.log(showHeart.value);
-      console.log("LIKED", seletedId);
-
       unsubscribe = db
         .collection("Posts")
         .doc(seletedId)
         .update({ liked: !props.post.liked })
         .then(() => {
-          console.log("resLIKED");
           showHeart.value = true;
 
           setTimeout(() => {
@@ -88,7 +100,7 @@ export default {
 
     onUnmounted(() => unsubscribe());
 
-    return { likeAPost, showHeart, unsubscribe };
+    return { likeAPost, showHeart, unsubscribe, visible, showSinglePostModal };
   }
 };
 </script>
