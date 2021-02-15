@@ -6,15 +6,14 @@
       <div class="username">{{ post.username }}</div>
     </div>
     <div class="feature-image-wrapper">
+      <div class="flash-heart">
+        <LoveIcon :status="post.liked" class="icon" />
+      </div>
       <img :src="post.imageUrl" class="feature-image" />
     </div>
     <div class="action-btns">
       <div class="left">
-        <LoveIcon
-          :status="post.liked"
-          class="icon"
-          @click="likeAPost(post.id)"
-        />
+        <LoveIcon :status="post.liked" @click="likeAPost(post.id)" />
         <CommentIcon class="icon" />
         <ShareIcon class="icon" />
       </div>
@@ -38,14 +37,25 @@ import ShareIcon from "../../assets/svgs/share";
 import BookmarkIcon from "../../assets/svgs/bookmark";
 import Avatar from "./Avatar.vue";
 
+import { db } from "../../../config/firebase";
+import { onUnmounted } from "vue";
+
 export default {
   props: ["post"],
   components: { LoveIcon, CommentIcon, ShareIcon, BookmarkIcon, Avatar },
 
-  setup() {
+  setup(props) {
+    let unsubscribe;
     const likeAPost = seletedId => {
       console.log("LIKED", seletedId);
+
+      unsubscribe = db
+        .collection("Posts")
+        .doc(seletedId)
+        .update({ liked: !props.post.liked });
     };
+
+    onUnmounted(() => unsubscribe());
 
     return { likeAPost };
   }
@@ -83,6 +93,11 @@ export default {
     width: 100%;
     border-radius: 15px;
     overflow: hidden;
+    position: relative;
+
+    .flash-heart {
+      position: absolute;
+    }
 
     & .feature-image {
       width: 100%;
