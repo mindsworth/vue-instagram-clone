@@ -35,7 +35,7 @@
       </p>
     </div>
     <comment @click="showSinglePostModal" />
-    <PostModal :visible="visible" @click="showSinglePostModal" />
+    <PostModal :visible="visible" @click="showSinglePostModal" :post="post" />
   </div>
 </template>
 

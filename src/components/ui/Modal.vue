@@ -8,9 +8,8 @@
       >
         <CloseIcon class="close-icon" data-name="close" />
       </div>
-      <div class="post-wrapper">
-        <slot></slot>
-      </div>
+
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -38,7 +37,7 @@ export default {
   z-index: 9999;
 
   .dialog {
-    max-width: 817px;
+    max-width: 935px;
     background-color: #fff;
   }
 
@@ -51,10 +50,6 @@ export default {
     .close-icon {
       cursor: pointer;
     }
-  }
-
-  .post-wrapper {
-    min-height: 450px;
   }
 }
 </style>
