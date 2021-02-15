@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <div class="post-container">
-        <card v-for="post in posts" :key="post.username" :post="post" />
+        <card v-for="post in posts" :key="post.id" :post="post" />
       </div>
       <div class="sidebar"></div>
     </div>
@@ -23,11 +23,10 @@ export default {
 
     onMounted(() => {
       db.collection("Posts").onSnapshot(snapshot => {
-        console.log(
-          "snapshot",
-          snapshot.docs.map(doc => doc.data())
-        );
-        posts.value = snapshot.docs.map(doc => doc.data());
+        posts.value = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
       });
     });
 
