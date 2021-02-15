@@ -33,6 +33,7 @@
             class="editor"
             contenteditable
             @input="onInputChange"
+            @keyup.enter="addComment"
           />
           <button
             class="post-btn"
